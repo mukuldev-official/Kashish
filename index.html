@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+Kashish🤍 - A God Gift Cutiee
+</title>
+<link rel="icon" type="image/png" href="assets/favicon.png" />
+
+<link rel="icon" href="assets\favicon2.png" type="image/png">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        .dancing-script {
+            font-family: 'Dancing Script', cursive;
+        }
+        .montserrat {
+            font-family: 'Montserrat', sans-serif;
+        }
+        .heart-beat {
+            animation: heartbeat 1.5s ease-in-out infinite both;
+        }
+        @keyframes heartbeat {
+            0% { transform: scale(1); }
+            25% { transform: scale(1.1); }
+            50% { transform: scale(1); }
+            75% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+        .fade-in {
+            animation: fadeIn 2s ease-in forwards;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        .slide-container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+        .slide {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 1.5s ease-in-out;
+        }
+        .slide.active {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body class="bg-pink-50 montserrat">
+<canvas id="canvasBackground" class="fixed top-0 left-0 w-full h-full -z-10"></canvas>
+
+<script>
+// Beautiful Particle Canvas Background
+document.addEventListener('DOMContentLoaded', function() {
+    const canvas = document.getElementById('canvasBackground');
+    const ctx = canvas.getContext('2d');
+    
+    // Set canvas to full window size
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    
+    // Particles array
+    const particles = [];
+    const particleCount = window.innerWidth < 768 ? 50 : 150;
+    
+    // Colors - pink/purple theme to match your design
+    const colors = ['#f9a8d4', '#f472b6', '#ec4899', '#db2777', '#c026d3', '#a855f7'];
+    
+    // Particle class
+    class Particle {
+        constructor() {
+            this.x = Math.random() * canvas.width;
+            this.y = Math.random() * canvas.height;
+            this.size = Math.random() * 5 + 1;
+            this.color = colors[Math.floor(Math.random() * colors.length)];
+            this.speedX = Math.random() * 3 - 1.5;
+            this.speedY = Math.random() * 3 - 1.5;
+            this.opacity = Math.random() * 0.6 + 0.1;
+        }
+        
+        update() {
+            this.x += this.speedX;
+            this.y += this.speedY;
+            
+            // Bounce off edges
+            if (this.x > canvas.width || this.x < 0) {
+                this.speedX = -this.speedX;
+            }
+            if (this.y > canvas.height || this.y < 0) {
+                this.speedY = -this.speedY;
+            }
+            
+            // Mouse interaction
+            const dx = mouse.x - this.x;
+            const dy = mouse.y - this.y;
+            const distance = Math.sqrt(dx * dx + dy * dy);
+            
+            if (distance < 100) {
+                this.speedX = dx * 0.05;
+                this.speedY = dy * 0.05;
+            }
+        }
+        
+        draw() {
+            ctx.beginPath();
+            ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+            ctx.fillStyle = this.color;
+            ctx.globalAlpha = this.opacity;
+            ctx.fill();
+            ctx.closePath();
+            
+            // Draw connections between particles
+            for (let i = 0; i < particles.length; i++) {
+                const p = particles[i];
+                const dx = this.x - p.x;
+                const dy = this.y - p.y;
+                const distance = Math.sqrt(dx * dx + dy * dy);
+                
+                if (distance < 100) {
+                    ctx.beginPath();
+                    ctx.strokeStyle = this.color;
+                    ctx.globalAlpha = this.opacity * 0.3;
+                    ctx.lineWidth = 0.5;
+                    ctx.moveTo(this.x, this.y);
+                    ctx.lineTo(p.x, p.y);
+                    ctx.stroke();
+                    ctx.closePath();
+                }
+            }
+        }
+    }
+    
+    // Mouse position
+    const mouse = {
+        x: null,
+        y: null
+    };
+    
+    window.addEventListener('mousemove', function(e) {
+        mouse.x = e.x;
+        mouse.y = e.y;
+    });
+    
+    // Initialize particles
+    function init() {
+        for (let i = 0; i < particleCount; i++) {
+            particles.push(new Particle());
+        }
+    }
+    
+    // Animation loop
+    function animate() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        
+        for (let i = 0; i < particles.length; i++) {
+            particles[i].update();
+            particles[i].draw();
+        }
+        
+        requestAnimationFrame(animate);
+    }
+    
+    // Handle window resize
+    window.addEventListener('resize', function() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+    });
+    
+    // Start everything
+    init();
+    animate();
+});
+</script>
+
+<style>
+/* Add this to your existing styles */
+#canvasBackground {
+    background: linear-gradient(135deg, #fdf2f8 0%, #fae8ff 100%);
+}
+</style>
+    <section class="min-h-screen flex flex-col items-center justify-center p-4 text-center relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-b from-pink-100 to-purple-100 opacity-80 z-0"></div>
+        <div class="relative z-10 max-w-4xl mx-auto">
+            <h1 class="text-5xl md:text-7xl font-bold text-pink-600 dancing-script mb-6 fade-in">For My Beautiful Kashish</h1>
+            <p class="text-xl md:text-2xl text-gray-700 mb-8 fade-in" style="animation-delay: 0.5s;">Every stroke of this pencil carries my care for you!!</p>
+            
+            <div class="relative group mt-12 fade-in" style="animation-delay: 1s;">
+                <div class="absolute -inset-2 bg-gradient-to-r from-pink-400 to-purple-500 rounded-lg blur opacity-75 group-hover:opacity-100 transition duration-200"></div>
+                <button id="revealBtn" class="relative px-8 py-4 bg-white rounded-lg leading-none flex items-center justify-center">
+                    <span class="text-pink-600 font-bold text-xl dancing-script">Click to Reveal Your Gift</span>
+                </button>
+            </div>
+        </div>
+        
+        <div class="absolute bottom-10 left-0 right-0 flex justify-center">
+            <svg class="heart-beat w-12 h-12 text-pink-500" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd"></path>
+            </svg>
+        </div>
+    </section>
+    
+    <section id="giftSection" class="min-h-screen hidden flex-col items-center justify-center p-6 bg-gradient-to-br from-pink-100 to-purple-200">
+    <div id="hearts-container" class="absolute inset-0 overflow-hidden pointer-events-none"></div>
+    <script>
+        // Floating Hearts Effect
+document.addEventListener('DOMContentLoaded', function() {
+    const container = document.getElementById('hearts-container');
+    const colors = ['#f9a8d4', '#f472b6', '#ec4899', '#db2777', '#c026d3'];
+    const heartsCount = 20; // Adjust number of hearts
+    
+    // Create hearts
+    for (let i = 5; i < heartsCount; i++) {
+        createHeart();
+    }
+    
+    function createHeart() {
+        const heart = document.createElement('div');
+        const size = Math.random() * 20 + 10;
+        const duration = Math.random() * 15 + 10;
+        const delay = Math.random() * 5;
+        const color = colors[Math.floor(Math.random() * colors.length)];
+        
+        heart.innerHTML = '❤';
+        heart.style.position = 'absolute';
+        heart.style.fontSize = `${size}px`;
+        heart.style.color = color;
+        heart.style.opacity = Math.random() * 0.5 + 0.1;
+        heart.style.left = `${Math.random() * 100}%`;
+        heart.style.top = `${Math.random() * 100}%`;
+        heart.style.animation = `float ${duration}s ease-in-out ${delay}s infinite`;
+        heart.style.transform = `translate(-50%, -50%) rotate(${Math.random() * 360}deg)`;
+        
+        container.appendChild(heart);
+    }
+});
+
+    </script>
+    <style>
+    @keyframes float {
+        0% {
+            transform: translate(-50%, -50%) rotate(0deg) translateY(0);
+            opacity: 0.1;
+        }
+        50% {
+            opacity: 0.6;
+        }
+        100% {
+            transform: translate(-50%, -50%) rotate(360deg) translateY(-100px);
+            opacity: 0;
+        }
+    }
+    
+    /* Make sure your portrait section has this */
+    #giftSection {
+        position: relative;
+        overflow: hidden;
+    }
+</style>
+        <div class="max-w-4xl mx-auto text-center">
+            <h2 class="text-4xl md:text-6xl font-bold text-pink-700 dancing-script mb-8">Portraits of Perfection</h2>
+            
+            <div class="relative mx-auto w-auto max-w-md md:max-w-lg lg:max-w-xl mb-12 h-[100vh]">
+
+    <div class="slide-container relative h-full overflow-hidden rounded-lg">
+    
+        <div class="slide active">
+            <img src="assets/portrait.png" alt="Pencil Art Portrait 1" 
+                class="w-full h-full object-cover rounded-lg shadow-2xl border-8 border-white 
+                       transform rotate-1 transition-all duration-500 hover:rotate-0 hover:scale-105">
+        </div>
+    
+        <div class="slide">
+            <img src="assets/port2.png" alt="Pencil Art Portrait 2" 
+                class="w-full h-full object-cover rounded-lg shadow-2xl border-8 border-white 
+                       transform -rotate-1 transition-all duration-500 hover:rotate-0 hover:scale-105">
+        </div>
+        
+    
+        <button class="absolute left-4 top-1/2 -translate-y-1/2 bg-white/80 rounded-full p-2 
+                      shadow-md hover:bg-white transition z-10 slide-prev">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-pink-600" fill="none" 
+                 viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+            </svg>
+        </button>
+        <button class="absolute right-4 top-1/2 -translate-y-1/2 bg-white/80 rounded-full p-2 
+                      shadow-md hover:bg-white transition z-10 slide-next">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-pink-600" fill="none" 
+                 viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+            </svg>
+        </button>
+        
+        
+        <div class="absolute bottom-4 left-1/2 -translate-x-1/2 flex space-x-2 z-10">
+            <button class="w-3 h-3 rounded-full bg-white/80 hover:bg-white transition slide-indicator" 
+                    data-slide="0"></button>
+            <button class="w-3 h-3 rounded-full bg-white/80 hover:bg-white transition slide-indicator" 
+                    data-slide="1"></button>
+        </div>
+    </div>
+    
+    
+    <div class="absolute -top-6 -left-6 w-16 h-16 bg-pink-200 rounded-full opacity-70 z-0"></div>
+    <div class="absolute -bottom-6 -right-6 w-20 h-20 bg-purple-200 rounded-full opacity-70 z-0"></div>
+</div>
+
+
+            <div class="bg-white bg-opacity-80 rounded-xl p-6 md:p-8 shadow-lg backdrop-blur-sm max-w-2xl mx-auto">
+                <h3 class="text-2xl md:text-3xl text-pink-600 dancing-script mb-4">My Dearest Kashish,</h3>
+                <p class="text-gray-700 text-lg mb-4">
+                    These pencil arts capture just a fraction of your beauty - the beauty I'm so lucky to see every day. 
+                    Each line represents a moment I've cherished with you, each shade a memory I hold dear.
+                </p>
+                <p class="text-gray-700 text-lg mb-4">
+                    You inspire me in ways I can't fully express, but I hope these artworks show you how I see you - 
+                    absolutely breathtaking in every way.
+                </p>
+                <p class="text-pink-600 text-xl dancing-script mt-6">
+                    Forever Yours,
+                    <span class="block text-2xl mt-2">Deepanshu(Friend)</span>
+                </p>
+                
+<section class="py-16 px-4 bg-gradient-to-r from-pink-50 to-purple-50">
+  <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-8">
+
+    <div class="w-full md:w-1/2 h-96 relative overflow-hidden rounded-2xl shadow-xl transform transition-all duration-500 hover:scale-[1.02] hover:shadow-2xl">
+      <img src="assets/her.png" alt="For Kashish" 
+           class="w-full h-full object-cover absolute inset-0 animate-fade-in"
+           style="animation-delay: 0.3s;">
+      <div class="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
+      <div class="absolute bottom-6 left-6 text-white">
+        <h3 class="text-3xl font-bold dancing-script">Memories</h3>
+        <p class="text-pink-200">Forever cherished</p>
+      </div>
+    </div>
+
+    
+    <div class="w-full md:w-1/2 flex flex-col items-center justify-center p-8 text-center">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 text-pink-600 mb-4" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+      </svg>
+      <h3 class="text-3xl font-bold text-pink-700 dancing-script mb-4">Follow Me</h3>
+      <p class="text-gray-600 mb-6">For more beautiful moments and updates</p>
+      <a href="https://www.instagram.com/1x_ayushi_/" target="_blank" 
+         class="px-8 py-3 bg-gradient-to-r from-pink-500 to-purple-500 text-white rounded-full font-semibold hover:from-pink-600 hover:to-purple-600 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1">
+        @Kashish's Instagram
+      </a>
+    </div>
+  </div>
+</section>
+
+<style>
+  @keyframes fade-in {
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
+  }
+  .animate-fade-in {
+    animation: fade-in 1.5s ease-out forwards;
+  }
+</style>
+            </div>
+            
+            <button id="specialMessageBtn" class="mt-12 px-6 py-3 bg-pink-500 text-white rounded-full font-semibold hover:bg-pink-600 transition duration-300 shadow-lg">
+                Click for a Special Message
+            </button>
+        </div>
+    </section>
+
+    <div id="specialMessageModal" class="fixed inset-0 bg-black bg-opacity-70 hidden flex items-center justify-center z-50 p-4">
+        <div class="bg-white rounded-xl max-w-md w-full p-8 relative">
+            <button id="closeModalBtn" class="absolute top-4 right-4 text-gray-500 hover:text-gray-700">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+            </button>
+            
+            <div class="text-center">
+                <svg class="w-16 h-16 mx-auto text-pink-500 mb-4" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd"></path>
+                </svg>
+                <h3 class="text-2xl font-bold text-pink-600 dancing-script mb-4">Just For You</h3>
+                <p class="text-gray-700 mb-6">
+                    You are my future Doctor and I can't even Need Neet Result to pride you with Doctor tag. Because You study hard you work hard And You are always right and You are really Awesome And Cute..
+                </p>
+                <p class="text-pink-500 dancing-script text-xl">
+                    You are beautiful more than words can express.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+    // Enhanced slideshow functionality
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.slide');
+    const indicators = document.querySelectorAll('.slide-indicator');
+    const prevBtn = document.querySelector('.slide-prev');
+    const nextBtn = document.querySelector('.slide-next');
+    let slideInterval;
+    
+    function showSlide(n) {
+        // Wrap around if at ends
+        currentSlide = (n + slides.length) % slides.length;
+        
+        // Update slides
+        slides.forEach((slide, index) => {
+            slide.classList.toggle('active', index === currentSlide);
+        });
+        
+        // Update indicators
+        indicators.forEach((indicator, index) => {
+            indicator.classList.toggle('bg-white', index === currentSlide);
+            indicator.classList.toggle('bg-white/80', index !== currentSlide);
+        });
+        
+        // Reset timer when manually navigating
+        resetTimer();
+    }
+    
+    function nextSlide() {
+        showSlide(currentSlide + 1);
+    }
+    
+    function prevSlide() {
+        showSlide(currentSlide - 1);
+    }
+    
+    function resetTimer() {
+        clearInterval(slideInterval);
+        slideInterval = setInterval(nextSlide, 5000);
+    }
+    
+    // Event listeners
+    nextBtn.addEventListener('click', nextSlide);
+    prevBtn.addEventListener('click', prevSlide);
+    
+    indicators.forEach(indicator => {
+        indicator.addEventListener('click', () => {
+            showSlide(parseInt(indicator.dataset.slide));
+        });
+    });
+    
+    // Reveal gift section
+    document.getElementById('revealBtn').addEventListener('click', function() {
+        // Hide hero section
+        document.querySelector('section').classList.add('hidden');
+        
+        // Show gift section with animation
+        const giftSection = document.getElementById('giftSection');
+        giftSection.classList.remove('hidden');
+        giftSection.classList.add('animate__animated', 'animate__fadeIn');
+        
+        // Start slideshow when section is revealed
+        resetTimer();
+    });
+    
+    // Pause on hover (optional)
+    const slideContainer = document.querySelector('.slide-container');
+    slideContainer.addEventListener('mouseenter', () => clearInterval(slideInterval));
+    slideContainer.addEventListener('mouseleave', resetTimer);
+    
+    // Special message button
+    document.getElementById('specialMessageBtn').addEventListener('click', function() {
+        document.getElementById('specialMessageModal').classList.remove('hidden');
+        // Pause slideshow when modal is open
+        clearInterval(slideInterval);
+    });
+    
+    // Close modal button
+    document.getElementById('closeModalBtn').addEventListener('click', function() {
+        document.getElementById('specialMessageModal').classList.add('hidden');
+        // Resume slideshow when modal is closed
+        resetTimer();
+    });
+    
+    // Close modal when clicking outside
+    document.getElementById('specialMessageModal').addEventListener('click', function(e) {
+        if (e.target === this) {
+            this.classList.add('hidden');
+            // Resume slideshow when modal is closed
+            resetTimer();
+        }
+    });
+        // Special message button
+        document.getElementById('specialMessageBtn').addEventListener('click', function() {
+            document.getElementById('specialMessageModal').classList.remove('hidden');
+            // Pause slideshow when modal is open
+            clearInterval(slideInterval);
+        });
+        
+        // Close modal button
+        document.getElementById('closeModalBtn').addEventListener('click', function() {
+            document.getElementById('specialMessageModal').classList.add('hidden');
+            // Resume slideshow when modal is closed
+            slideInterval = setInterval(nextSlide, 5000);
+        });
+        
+        // Close modal when clicking outside
+        document.getElementById('specialMessageModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                this.classList.add('hidden');
+                // Resume slideshow when modal is closed
+                slideInterval = setInterval(nextSlide, 5000);
+            }
+        });
+    </script>
+
+<div class="fixed bottom-6 right-6 z-50">
+  <div id="musicPlayer" class="w-20 h-20 rounded-full bg-pink-700 shadow-lg flex items-center justify-center cursor-pointer group transition-all duration-300 hover:scale-110 hover:shadow-xl">
+
+    <div id="disc" class="w-14 h-14 rounded-full bg-gradient-to-br from-pink-900 to-pink-500 border-4 border-pink-300/30 flex items-center justify-center transition-transform duration-1000 ease-linear">
+      <div class="w-4 h-4 rounded-full bg-pink-200/80"></div>
+    </div>
+   
+    <div class="absolute inset-0 flex items-center justify-center">
+      <svg id="playIcon" class="w-8 h-8 text-pink-100" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd"></path>
+      </svg>
+      <svg id="pauseIcon" class="w-8 h-8 text-pink-100 hidden" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+        <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zM7 8a1 1 0 012 0v4a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v4a1 1 0 102 0V8a1 1 0 00-1-1z" clip-rule="evenodd"></path>
+      </svg>
+    </div>
+  </div>
+</div>
+
+<audio id="bgMusic" loop>
+  <source src="assets/Shaky  Dance Cover  Nainika & Thanaya.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+  const musicPlayer = document.getElementById('musicPlayer');
+  const bgMusic = document.getElementById('bgMusic');
+  const playIcon = document.getElementById('playIcon');
+  const pauseIcon = document.getElementById('pauseIcon');
+  const disc = document.getElementById('disc');
+  let isPlaying = false;
+
+  // Toggle play/pause
+  musicPlayer.addEventListener('click', function() {
+    toggleMusic();
+  });
+
+  function toggleMusic() {
+    if (!isPlaying) {
+      bgMusic.play()
+        .then(() => {
+          isPlaying = true;
+          playIcon.classList.add('hidden');
+          pauseIcon.classList.remove('hidden');
+          disc.style.animation = 'spin 2s linear infinite';
+        })
+        .catch(error => {
+          console.log("Audio playback failed:", error);
+        });
+    } else {
+      bgMusic.pause();
+      isPlaying = false;
+      playIcon.classList.remove('hidden');
+      pauseIcon.classList.add('hidden');
+      disc.style.animation = 'none';
+    }
+  }
+
+  // Auto-play when portrait section opens
+  document.getElementById('revealBtn').addEventListener('click', function() {
+    // Small delay to ensure user interaction is registered
+    setTimeout(() => {
+      if (!isPlaying) {
+        toggleMusic();
+      }
+    }, 300);
+  });
+
+
+</script>
+
+<style>
+  /* Add to your existing styles */
+  @keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+  
+  #musicPlayer {
+    box-shadow: 0 4px 15px rgba(219, 39, 119, 0.3);
+  }
+  
+  #disc {
+    box-shadow: inset 0 0 8px rgba(0,0,0,0.3);
+  }
+  
+  #musicPlayer:hover #disc {
+    transform: scale(1.05);
+  }
+</style>
+    
+</body>
+</html>
